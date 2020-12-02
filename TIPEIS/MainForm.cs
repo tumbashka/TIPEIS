@@ -52,5 +52,17 @@ namespace TIPEIS
             FormSubdivision form = new FormSubdivision();
             form.Show();
         }
+
+        private void журналПроводокToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPostingJournal form = new FormPostingJournal();
+            form.Show();            
+        }
+
+        private void журналОперацийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormJournalOperation form = new FormJournalOperation();
+            form.Show();
+        }
     }
 }

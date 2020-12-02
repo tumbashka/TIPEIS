@@ -66,6 +66,18 @@
     <Compile Include="FormChartOfAccounts.Designer.cs">
       <DependentUpon>FormChartOfAccounts.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEnterDataOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEnterDataOperation.Designer.cs">
+      <DependentUpon>FormEnterDataOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormJournalOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormJournalOperation.Designer.cs">
+      <DependentUpon>FormJournalOperation.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +89,12 @@
     </Compile>
     <Compile Include="FormMOL.Designer.cs">
       <DependentUpon>FormMOL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPostingJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPostingJournal.Designer.cs">
+      <DependentUpon>FormPostingJournal.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStorages.cs">
       <SubType>Form</SubType>
@@ -104,11 +122,20 @@
     <EmbeddedResource Include="FormChartOfAccounts.resx">
       <DependentUpon>FormChartOfAccounts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEnterDataOperation.resx">
+      <DependentUpon>FormEnterDataOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormJournalOperation.resx">
+      <DependentUpon>FormJournalOperation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMaterial.resx">
       <DependentUpon>FormMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMOL.resx">
       <DependentUpon>FormMOL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPostingJournal.resx">
+      <DependentUpon>FormPostingJournal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStorages.resx">
       <DependentUpon>FormStorages.cs</DependentUpon>

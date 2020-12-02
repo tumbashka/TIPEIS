@@ -29,11 +29,14 @@ namespace TIPEIS
         {
             string ConnectionString = @"Data Source=" + sPath +
            ";New=False;Version=3";
-            String selectCommand = "Select Material.ID, Material.Name, Material.Price, Subdivision.Name from Material join Subdivision on Material.SubdivisionID = Subdivision.ID";
+            String selectCommand = "Select Material.ID, Material.Name, Material.Type, Material.Price, Subdivision.Name from Material join Subdivision on Material.SubdivisionID = Subdivision.ID";
             selectTable(ConnectionString, selectCommand);
             String selectSubd = "SELECT ID, Name FROM Subdivision";
-            selectCombo(ConnectionString, selectSubd, toolStripComboBox1, "Name", "ID");
-            toolStripComboBox1.SelectedIndex = -1;
+            selectCombo(ConnectionString, selectSubd, toolStripComboBoxSubdivision, "Name", "ID");
+            toolStripComboBoxSubdivision.SelectedIndex = -1;
+            String selectType = "SELECT Account, Description FROM ChartOfAccounts WHERE Account<11 AND Account>10";
+            selectCombo(ConnectionString, selectType, toolStripComboBoxType, "Description", "Account");
+            toolStripComboBoxType.SelectedIndex = -1;
         }
         public void selectCombo(string ConnectionString, String selectCommand,
 ToolStripComboBox comboBox, string displayMember, string valueMember)
@@ -63,41 +66,42 @@ ToolStripComboBox comboBox, string displayMember, string valueMember)
             dataGridView1.DataMember = ds.Tables[0].ToString();
             connect.Close();
         }
-        private void check()
+        private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-            if (!(toolStripTextBox2.Text.Length >= minLength && toolStripTextBox1.Text.Length < maxLength))
+            if (!(toolStripTextBoxName.Text.Length >= minLength && toolStripTextBoxName.Text.Length < maxLength))
             {
                 MessageBox.Show("Поле Название должно содержать не менее 4 и не более 50 символов");
                 return;
             }
-            if (toolStripComboBox1.Text == "")
+            if (toolStripComboBoxType.Text == "")
+            {
+                MessageBox.Show("Выберите тип");
+                return;
+            }
+            if (toolStripComboBoxSubdivision.Text == "")
             {
                 MessageBox.Show("Выберите подразделение");
                 return;
             }
-            if (toolStripTextBox1.Text.IndexOf('.') > 0)
+            if (toolStripTextBoxPrice.Text.IndexOf('.') > 0)
             {
-                if (toolStripTextBox1.Text.Substring(toolStripTextBox1.Text.IndexOf('.')).Length > 3)
+                if (toolStripTextBoxPrice.Text.Substring(toolStripTextBoxPrice.Text.IndexOf('.')).Length > 3)
                 {
                     MessageBox.Show("Цена должна быть не более 15 символов и иметь не более 2-ух знаков после запятой");
                     return;
                 }
             }
-        }
-        private void toolStripButtonAdd_Click(object sender, EventArgs e)
-        {
-            check();
             string ConnectionString = @"Data Source=" + sPath +
          ";New=False;Version=3";
             String selectCommand = "select MAX(ID) from Material";
             object maxValue = selectValue(ConnectionString, selectCommand);
             if (Convert.ToString(maxValue) == "")
                 maxValue = 0;
-            string txtSQLQuery = "insert into Material (ID, Name, Price, SubdivisionID) values (" +
-           (Convert.ToInt32(maxValue) + 1) + ", '" + toolStripTextBox2.Text + "', " + toolStripTextBox1.Text + ",'" + toolStripComboBox1.ComboBox.SelectedValue + "')";
+            string txtSQLQuery = "insert into Material (ID, Name, Type, Price, SubdivisionID) values (" +
+           (Convert.ToInt32(maxValue) + 1) + ", '" + toolStripTextBoxName.Text + "', '" + toolStripComboBoxSubdivision.ComboBox.Text + "', " + toolStripTextBoxPrice.Text + ",'" + toolStripComboBoxSubdivision.ComboBox.SelectedValue + "')";
             ExecuteQuery(txtSQLQuery);
             //обновление dataGridView1
-            selectCommand = "Select Material.ID, Material.Name, Material.Price, Subdivision.Name from Material join Subdivision on Material.SubdivisionID = Subdivision.ID";
+            selectCommand = "Select Material.ID, Material.Name, Material.Type, Material.Price, Subdivision.Name from Material join Subdivision on Material.SubdivisionID = Subdivision.ID";
             refreshForm(ConnectionString, selectCommand);
         }
         private void ExecuteQuery(string txtQuery)
@@ -115,9 +119,10 @@ ToolStripComboBox comboBox, string displayMember, string valueMember)
             selectTable(ConnectionString, selectCommand);
             dataGridView1.Update();
             dataGridView1.Refresh();
-            toolStripTextBox1.Text = "";
-            toolStripTextBox2.Text = "";
-            toolStripComboBox1.SelectedIndex = -1;
+            toolStripTextBoxPrice.Text = "";
+            toolStripTextBoxName.Text = "";
+            toolStripComboBoxSubdivision.SelectedIndex = -1;
+            toolStripComboBoxType.SelectedIndex = -1;
         }
         public object selectValue(string ConnectionString, String selectCommand)
         {
@@ -137,24 +142,49 @@ ToolStripComboBox comboBox, string displayMember, string valueMember)
         }
         private void toolStripButtonChange_Click(object sender, EventArgs e)
         {
-            check();
+            if (!(toolStripTextBoxName.Text.Length >= minLength && toolStripTextBoxName.Text.Length < maxLength))
+            {
+                MessageBox.Show("Поле Название должно содержать не менее 4 и не более 50 символов");
+                return;
+            }
+            if (toolStripComboBoxType.Text == "")
+            {
+                MessageBox.Show("Выберите тип");
+                return;
+            }
+            if (toolStripComboBoxSubdivision.Text == "")
+            {
+                MessageBox.Show("Выберите подразделение");
+                return;
+            }
+            if (toolStripTextBoxPrice.Text.IndexOf('.') > 0)
+            {
+                if (toolStripTextBoxPrice.Text.Substring(toolStripTextBoxPrice.Text.IndexOf('.')).Length > 3)
+                {
+                    MessageBox.Show("Цена должна быть не более 15 символов и иметь не более 2-ух знаков после запятой");
+                    return;
+                }
+            }
             //выбрана строка CurrentRow
             int CurrentRow = dataGridView1.SelectedCells[0].RowIndex;
             //получить значение Name выбранной строки
             string valueId = dataGridView1[0, CurrentRow].Value.ToString();
-            string changeName = toolStripTextBox2.Text;
-            string changePrice = toolStripTextBox1.Text;
-            string changeSubdivisionID = toolStripComboBox1.ComboBox.SelectedValue.ToString();
+            string changeName = toolStripTextBoxName.Text;
+            string changePrice = toolStripTextBoxPrice.Text;
+            string changeSubdivisionID = toolStripComboBoxSubdivision.ComboBox.SelectedValue.ToString();
+            string changeType = toolStripComboBoxType.ComboBox.Text;
             //обновление Name
-            String selectCommand = "update Material set Name='" + changeName + "', Price ='" + changePrice + "', SubdivisionID ='" + changeSubdivisionID + "'where ID = " + valueId;
+            String selectCommand = "update Material set Name='" + changeName + "', Type='" + changeType + "', Price ='" + changePrice + "', SubdivisionID ='" + changeSubdivisionID + "'where ID = " + valueId;
             string ConnectionString = @"Data Source=" + sPath +
            ";New=False;Version=3";
             changeValue(ConnectionString, selectCommand);
             //обновление dataGridView1
-            selectCommand = "Select Material.ID, Material.Name, Material.Price, Subdivision.Name from Material join Subdivision on Material.SubdivisionID = Subdivision.ID";
+            selectCommand = "Select Material.ID, Material.Name, Material.Type, Material.Price, Subdivision.Name from Material join Subdivision on Material.SubdivisionID = Subdivision.ID";
             refreshForm(ConnectionString, selectCommand);
-            toolStripTextBox1.Text = "";
-            toolStripTextBox2.Text = "";
+            toolStripTextBoxPrice.Text = "";
+            toolStripTextBoxName.Text = "";
+            toolStripComboBoxSubdivision.SelectedIndex = -1;
+            toolStripComboBoxType.SelectedIndex = -1;
         }
 
         private void toolStripButtonDel_Click(object sender, EventArgs e)
@@ -168,10 +198,13 @@ ToolStripComboBox comboBox, string displayMember, string valueMember)
            ";New=False;Version=3";
             changeValue(ConnectionString, selectCommand);
             //обновление dataGridView1
-            selectCommand = "Select Material.ID, Material.Name, Material.Price, Subdivision.Name from Material join Subdivision on Material.SubdivisionID = Subdivision.ID";
+            selectCommand = "Select Material.ID, Material.Name, Material.Type, Material.Price, Subdivision.Name from Material join Subdivision on Material.SubdivisionID = Subdivision.ID";
             refreshForm(ConnectionString, selectCommand);
-            toolStripTextBox1.Text = "";
-            toolStripTextBox2.Text = "";
+            toolStripTextBoxPrice.Text = "";
+            toolStripTextBoxName.Text = "";
+            toolStripComboBoxSubdivision.SelectedIndex = -1;
+            toolStripComboBoxType.SelectedIndex = -1;
+
         }
         public void changeValue(string ConnectionString, String selectCommand)
         {
@@ -193,11 +226,13 @@ DataGridViewCellMouseEventArgs e)
             //выбрана строка CurrentRow
             int CurrentRow = dataGridView1.SelectedCells[0].RowIndex;
             string Name = dataGridView1[1, CurrentRow].Value.ToString();
-            toolStripTextBox2.Text = Name;
-            string Price = dataGridView1[2, CurrentRow].Value.ToString();
-            toolStripTextBox1.Text = Price;
-            string SubdivisionId = dataGridView1[3, CurrentRow].Value.ToString();
-            toolStripComboBox1.Text = SubdivisionId;
+            toolStripTextBoxName.Text = Name;
+            string Type = dataGridView1[2, CurrentRow].Value.ToString();
+            toolStripComboBoxType.Text = Type;
+            string Price = dataGridView1[3, CurrentRow].Value.ToString();
+            toolStripTextBoxPrice.Text = Price;
+            string SubdivisionId = dataGridView1[4, CurrentRow].Value.ToString();
+            toolStripComboBoxSubdivision.Text = SubdivisionId;
         }
     }
 }

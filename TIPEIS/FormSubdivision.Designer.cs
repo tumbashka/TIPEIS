@@ -36,10 +36,10 @@
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDel = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonChange = new System.Windows.Forms.ToolStripButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -67,41 +67,69 @@
             this.bindingNavigator1.MovePreviousItem = null;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = null;
-            this.bindingNavigator1.Size = new System.Drawing.Size(936, 28);
+            this.bindingNavigator1.Size = new System.Drawing.Size(936, 31);
             this.bindingNavigator1.TabIndex = 3;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // toolStripLabel4
             // 
             this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(77, 25);
+            this.toolStripLabel4.Size = new System.Drawing.Size(77, 28);
             this.toolStripLabel4.Text = "Название";
             // 
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(159, 28);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(159, 31);
             // 
             // toolStripLabel5
             // 
             this.toolStripLabel5.Name = "toolStripLabel5";
-            this.toolStripLabel5.Size = new System.Drawing.Size(88, 25);
+            this.toolStripLabel5.Size = new System.Drawing.Size(88, 28);
             this.toolStripLabel5.Text = "Счет затрат";
             // 
             // toolStripComboBox1
             // 
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(160, 28);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(160, 31);
             // 
             // toolStripButtonAdd
             // 
             this.toolStripButtonAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonAdd.Text = "Добавить";
             this.toolStripButtonAdd.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton2.Size = new System.Drawing.Size(100, 28);
+            this.toolStripButton2.Text = "Добавить";
+            this.toolStripButton2.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // toolStripButtonDel
+            // 
+            this.toolStripButtonDel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDel.Image")));
+            this.toolStripButtonDel.Name = "toolStripButtonDel";
+            this.toolStripButtonDel.RightToLeftAutoMirrorImage = true;
+            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 28);
+            this.toolStripButtonDel.Text = "Удалить";
+            this.toolStripButtonDel.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
+            // 
+            // toolStripButtonChange
+            // 
+            this.toolStripButtonChange.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonChange.Image")));
+            this.toolStripButtonChange.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonChange.Name = "toolStripButtonChange";
+            this.toolStripButtonChange.RightToLeftAutoMirrorImage = true;
+            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 28);
+            this.toolStripButtonChange.Text = "Редактирование";
+            this.toolStripButtonChange.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
             // 
             // dataGridView1
             // 
@@ -116,34 +144,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(913, 335);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton2.Size = new System.Drawing.Size(100, 25);
-            this.toolStripButton2.Text = "Добавить";
-            this.toolStripButton2.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
-            // 
-            // toolStripButtonDel
-            // 
-            this.toolStripButtonDel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDel.Image")));
-            this.toolStripButtonDel.Name = "toolStripButtonDel";
-            this.toolStripButtonDel.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 25);
-            this.toolStripButtonDel.Text = "Удалить";
-            this.toolStripButtonDel.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
-            // 
-            // toolStripButtonChange
-            // 
-            this.toolStripButtonChange.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonChange.Image")));
-            this.toolStripButtonChange.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonChange.Name = "toolStripButtonChange";
-            this.toolStripButtonChange.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 25);
-            this.toolStripButtonChange.Text = "Редактирование";
-            this.toolStripButtonChange.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
             // 
             // FormSubdivision
             // 

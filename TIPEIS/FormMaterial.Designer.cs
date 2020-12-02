@@ -32,18 +32,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMaterial));
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBoxPrice = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBoxSubdivision = new System.Windows.Forms.ToolStripComboBox();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonChange = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDel = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxName = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripComboBoxType = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -56,14 +59,17 @@
             this.bindingNavigator1.DeleteItem = null;
             this.bindingNavigator1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel3,
+            this.toolStripTextBoxName,
+            this.toolStripSeparator3,
             this.toolStripLabel2,
-            this.toolStripTextBox2,
+            this.toolStripComboBoxType,
             this.toolStripSeparator2,
             this.toolStripLabel1,
-            this.toolStripTextBox1,
+            this.toolStripTextBoxPrice,
             this.toolStripSeparator1,
             this.toolStripLabel5,
-            this.toolStripComboBox1,
+            this.toolStripComboBoxSubdivision,
             this.bindingNavigatorSeparator1,
             this.toolStripButtonAdd,
             this.toolStripButtonChange,
@@ -75,25 +81,15 @@
             this.bindingNavigator1.MovePreviousItem = null;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = null;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1118, 28);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1328, 28);
             this.bindingNavigator1.TabIndex = 5;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(77, 25);
-            this.toolStripLabel2.Text = "Название";
-            // 
-            // toolStripTextBox2
-            // 
-            this.toolStripTextBox2.AccessibleName = "Положение";
-            this.toolStripTextBox2.AutoSize = false;
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox2.MaxLength = 50;
-            this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(120, 27);
-            this.toolStripTextBox2.ToolTipText = "Текущее положение";
+            this.toolStripLabel2.Size = new System.Drawing.Size(35, 25);
+            this.toolStripLabel2.Text = "Тип";
             // 
             // toolStripSeparator2
             // 
@@ -106,15 +102,15 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(45, 25);
             this.toolStripLabel1.Text = "Цена";
             // 
-            // toolStripTextBox1
+            // toolStripTextBoxPrice
             // 
-            this.toolStripTextBox1.AccessibleName = "Положение";
-            this.toolStripTextBox1.AutoSize = false;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox1.MaxLength = 15;
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(120, 27);
-            this.toolStripTextBox1.ToolTipText = "Текущее положение";
+            this.toolStripTextBoxPrice.AccessibleName = "Положение";
+            this.toolStripTextBoxPrice.AutoSize = false;
+            this.toolStripTextBoxPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxPrice.MaxLength = 15;
+            this.toolStripTextBoxPrice.Name = "toolStripTextBoxPrice";
+            this.toolStripTextBoxPrice.Size = new System.Drawing.Size(120, 27);
+            this.toolStripTextBoxPrice.ToolTipText = "Текущее положение";
             // 
             // toolStripSeparator1
             // 
@@ -127,10 +123,10 @@
             this.toolStripLabel5.Size = new System.Drawing.Size(119, 25);
             this.toolStripLabel5.Text = "Подразделение";
             // 
-            // toolStripComboBox1
+            // toolStripComboBoxSubdivision
             // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(160, 28);
+            this.toolStripComboBoxSubdivision.Name = "toolStripComboBoxSubdivision";
+            this.toolStripComboBoxSubdivision.Size = new System.Drawing.Size(160, 28);
             // 
             // bindingNavigatorSeparator1
             // 
@@ -176,15 +172,41 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 39);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1106, 408);
+            this.dataGridView1.Size = new System.Drawing.Size(1316, 408);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(77, 25);
+            this.toolStripLabel3.Text = "Название";
+            // 
+            // toolStripTextBoxName
+            // 
+            this.toolStripTextBoxName.AccessibleName = "Положение";
+            this.toolStripTextBoxName.AutoSize = false;
+            this.toolStripTextBoxName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxName.MaxLength = 50;
+            this.toolStripTextBoxName.Name = "toolStripTextBoxName";
+            this.toolStripTextBoxName.Size = new System.Drawing.Size(120, 27);
+            this.toolStripTextBoxName.ToolTipText = "Текущее положение";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripComboBoxType
+            // 
+            this.toolStripComboBoxType.Name = "toolStripComboBoxType";
+            this.toolStripComboBoxType.Size = new System.Drawing.Size(160, 28);
             // 
             // FormMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1118, 450);
+            this.ClientSize = new System.Drawing.Size(1328, 450);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormMaterial";
@@ -203,9 +225,8 @@
 
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxPrice;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
         private System.Windows.Forms.ToolStripButton toolStripButtonChange;
@@ -214,6 +235,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxSubdivision;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxName;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxType;
     }
 }
