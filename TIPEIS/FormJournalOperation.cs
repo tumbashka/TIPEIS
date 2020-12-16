@@ -14,16 +14,12 @@ namespace TIPEIS
 {
     public partial class FormJournalOperation : Form
     {
-        private SQLiteConnection sql_con;
-        private SQLiteCommand sql_cmd;
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
         private string sPath = Path.Combine(Application.StartupPath, "C:\\Program Files\\SQLiteStudio\\databases\\tipeis.db");
-        private int minLength = 4;
-        private int maxLength = 50;
         String selectAllCommand = "Select Document.ID, Document.Date, TablePart.ProfitAmount, TablePart.Count, Storage.Name, Material.Name, " +
-                "Buyer.FIO from Document join TablePart on TablePart.DocumentID = Document.ID join Storage on Document.StorageID = Storage.ID " +
-                "join Material on Document.MaterialID = Material.ID join Buyer on Document.BuyerID = Buyer.ID";
+                "Buyer.FIO, MOL.FIO from Document join TablePart on TablePart.DocumentID = Document.ID join Storage on Document.StorageID = Storage.ID " +
+                "join Material on Document.MaterialID = Material.ID join Buyer on Document.BuyerID = Buyer.ID join MOL on Document.MOLID = MOL.ID";
 
         public FormJournalOperation()
         {

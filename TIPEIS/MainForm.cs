@@ -56,7 +56,7 @@ namespace TIPEIS
         private void журналПроводокToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormPostingJournal form = new FormPostingJournal();
-            form.Show();            
+            form.ShowDialog();            
         }
 
         private void журналОперацийToolStripMenuItem_Click(object sender, EventArgs e)

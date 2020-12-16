@@ -31,7 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMaterial));
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxName = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBoxType = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBoxPrice = new System.Windows.Forms.ToolStripTextBox();
@@ -43,10 +47,6 @@
             this.toolStripButtonChange = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDel = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBoxName = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripComboBoxType = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -81,25 +81,52 @@
             this.bindingNavigator1.MovePreviousItem = null;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = null;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1328, 28);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1328, 31);
             this.bindingNavigator1.TabIndex = 5;
             this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(77, 28);
+            this.toolStripLabel3.Text = "Название";
+            // 
+            // toolStripTextBoxName
+            // 
+            this.toolStripTextBoxName.AccessibleName = "Положение";
+            this.toolStripTextBoxName.AutoSize = false;
+            this.toolStripTextBoxName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxName.MaxLength = 50;
+            this.toolStripTextBoxName.Name = "toolStripTextBoxName";
+            this.toolStripTextBoxName.Size = new System.Drawing.Size(120, 27);
+            this.toolStripTextBoxName.ToolTipText = "Текущее положение";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(35, 25);
+            this.toolStripLabel2.Size = new System.Drawing.Size(35, 28);
             this.toolStripLabel2.Text = "Тип";
+            // 
+            // toolStripComboBoxType
+            // 
+            this.toolStripComboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBoxType.Name = "toolStripComboBoxType";
+            this.toolStripComboBoxType.Size = new System.Drawing.Size(160, 31);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(45, 25);
+            this.toolStripLabel1.Size = new System.Drawing.Size(45, 28);
             this.toolStripLabel1.Text = "Цена";
             // 
             // toolStripTextBoxPrice
@@ -115,30 +142,31 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel5
             // 
             this.toolStripLabel5.Name = "toolStripLabel5";
-            this.toolStripLabel5.Size = new System.Drawing.Size(119, 25);
+            this.toolStripLabel5.Size = new System.Drawing.Size(119, 28);
             this.toolStripLabel5.Text = "Подразделение";
             // 
             // toolStripComboBoxSubdivision
             // 
+            this.toolStripComboBoxSubdivision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBoxSubdivision.Name = "toolStripComboBoxSubdivision";
-            this.toolStripComboBoxSubdivision.Size = new System.Drawing.Size(160, 28);
+            this.toolStripComboBoxSubdivision.Size = new System.Drawing.Size(160, 31);
             // 
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripButtonAdd
             // 
             this.toolStripButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAdd.Image")));
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(100, 25);
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(100, 28);
             this.toolStripButtonAdd.Text = "Добавить";
             this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
@@ -148,7 +176,7 @@
             this.toolStripButtonChange.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonChange.Name = "toolStripButtonChange";
             this.toolStripButtonChange.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 25);
+            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 28);
             this.toolStripButtonChange.Text = "Редактирование";
             this.toolStripButtonChange.Click += new System.EventHandler(this.toolStripButtonChange_Click);
             // 
@@ -157,7 +185,7 @@
             this.toolStripButtonDel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDel.Image")));
             this.toolStripButtonDel.Name = "toolStripButtonDel";
             this.toolStripButtonDel.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 25);
+            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 28);
             this.toolStripButtonDel.Text = "Удалить";
             this.toolStripButtonDel.Click += new System.EventHandler(this.toolStripButtonDel_Click);
             // 
@@ -175,32 +203,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1316, 408);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(77, 25);
-            this.toolStripLabel3.Text = "Название";
-            // 
-            // toolStripTextBoxName
-            // 
-            this.toolStripTextBoxName.AccessibleName = "Положение";
-            this.toolStripTextBoxName.AutoSize = false;
-            this.toolStripTextBoxName.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBoxName.MaxLength = 50;
-            this.toolStripTextBoxName.Name = "toolStripTextBoxName";
-            this.toolStripTextBoxName.Size = new System.Drawing.Size(120, 27);
-            this.toolStripTextBoxName.ToolTipText = "Текущее положение";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripComboBoxType
-            // 
-            this.toolStripComboBoxType.Name = "toolStripComboBoxType";
-            this.toolStripComboBoxType.Size = new System.Drawing.Size(160, 28);
             // 
             // FormMaterial
             // 

@@ -98,11 +98,15 @@ ToolStripComboBox comboBox, string displayMember, string valueMember)
             if (Convert.ToString(maxValue) == "")
                 maxValue = 0;
             string txtSQLQuery = "insert into Material (ID, Name, Type, Price, SubdivisionID) values (" +
-           (Convert.ToInt32(maxValue) + 1) + ", '" + toolStripTextBoxName.Text + "', '" + toolStripComboBoxSubdivision.ComboBox.Text + "', " + toolStripTextBoxPrice.Text + ",'" + toolStripComboBoxSubdivision.ComboBox.SelectedValue + "')";
+           (Convert.ToInt32(maxValue) + 1) + ", '" + toolStripTextBoxName.Text + "', '" + toolStripComboBoxType.ComboBox.Text + "', " + toolStripTextBoxPrice.Text + ",'" + toolStripComboBoxSubdivision.ComboBox.SelectedValue + "')";
             ExecuteQuery(txtSQLQuery);
             //обновление dataGridView1
             selectCommand = "Select Material.ID, Material.Name, Material.Type, Material.Price, Subdivision.Name from Material join Subdivision on Material.SubdivisionID = Subdivision.ID";
             refreshForm(ConnectionString, selectCommand);
+            toolStripTextBoxPrice.Text = "";
+            toolStripTextBoxName.Text = "";
+            toolStripComboBoxSubdivision.SelectedIndex = -1;
+            toolStripComboBoxType.SelectedIndex = -1;
         }
         private void ExecuteQuery(string txtQuery)
         {
