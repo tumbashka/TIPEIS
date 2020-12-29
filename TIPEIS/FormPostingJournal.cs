@@ -17,14 +17,18 @@ namespace TIPEIS
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
         private string sPath = Path.Combine(Application.StartupPath, "C:\\Program Files\\SQLiteStudio\\databases\\tipeis.db");
-        String selectAllCommand = "Select PostingJournal.SubkontoDT1, PostingJournal.SubkontoDT2, PostingJournal.SubkontoDT3, PostingJournal.Count, PostingJournal.Sum, PostingJournal.Operation, "+
-"PostingJournal.SubkontoKT, PostingJournal.Date, ChartOfAccountsDT.Account AS DT, ChartOfAccountsKT.Account AS KT "+
-"from PostingJournal "+
-"join ChartOfAccounts AS ChartOfAccountsDT on ChartOfAccountsDT.ID = PostingJournal.AccountDT_ID "+
-"join ChartOfAccounts AS ChartOfAccountsKT on ChartOfAccountsKT.ID = PostingJournal.AccountKT_ID";
+        String selectAllCommand = "Select PostingJournal.TablePartID, PostingJournal.Operation as Операция, ChartOfAccountsDT.Account AS ДТ, PostingJournal.SubkontoDT1 as СубконтоДТ1, " +
+            "PostingJournal.SubkontoDT2 as СубконтоДТ2 , PostingJournal.SubkontoDT3 as СубконтоДТ3 , ChartOfAccountsKT.Account AS КТ, " +
+            "PostingJournal.SubkontoKT1 as СубконтоКТ1 , PostingJournal.SubkontoKT2 as СубконтоКТ2 , PostingJournal.SubkontoKT3 as СубконтоКТ3 , " +
+            "PostingJournal.Count as 'Кол-во', PostingJournal.Sum as Сумма, PostingJournal.Date  as Дата " +
+            "from PostingJournal " +
+            "join ChartOfAccounts AS ChartOfAccountsDT on ChartOfAccountsDT.ID = PostingJournal.AccountDT_ID " +
+            "join ChartOfAccounts AS ChartOfAccountsKT on ChartOfAccountsKT.ID = PostingJournal.AccountKT_ID";
+        int? ID = null;
 
-        public FormPostingJournal()
+        public FormPostingJournal(int? ID)
         {
+            this.ID = ID;
             InitializeComponent();
         }
 
@@ -32,6 +36,16 @@ namespace TIPEIS
         {
             string ConnectionString = @"Data Source=" + sPath +
            ";New=False;Version=3";
+            if (ID != null)
+            {
+                selectAllCommand = "Select PostingJournal.TablePartID, PostingJournal.Operation as Операция, ChartOfAccountsDT.Account AS ДТ, PostingJournal.SubkontoDT1 as СубконтоДТ1, " +
+                    "PostingJournal.SubkontoDT2 as СубконтоДТ2 , PostingJournal.SubkontoDT3 as СубконтоДТ3 , ChartOfAccountsKT.Account AS КТ, " +
+                    "PostingJournal.SubkontoKT1 as СубконтоКТ1 , PostingJournal.SubkontoKT2 as СубконтоКТ2 , PostingJournal.SubkontoKT3 as СубконтоКТ3 , " +
+                    "PostingJournal.Count as 'Кол-во', PostingJournal.Sum as Сумма, PostingJournal.Date  as Дата " +
+                    "from PostingJournal " +
+                    "join ChartOfAccounts AS ChartOfAccountsDT on ChartOfAccountsDT.ID = PostingJournal.AccountDT_ID " +
+                    "join ChartOfAccounts AS ChartOfAccountsKT on ChartOfAccountsKT.ID = PostingJournal.AccountKT_ID where TablePartID = '" + ID + "'";
+            }
             selectTable(ConnectionString, selectAllCommand);
         }
 
@@ -46,9 +60,11 @@ namespace TIPEIS
             dataAdapter.Fill(ds);
             dataGridView1.DataSource = ds;
             dataGridView1.DataMember = ds.Tables[0].ToString();
+            dataGridView1.AutoResizeColumns();
+            dataGridView1.RowHeadersVisible = false;
             connect.Close();
         }
 
-       
+
     }
 }

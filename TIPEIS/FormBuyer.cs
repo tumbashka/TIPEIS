@@ -44,6 +44,8 @@ namespace TIPEIS
             dataAdapter.Fill(ds);
             dataGridView1.DataSource = ds;
             dataGridView1.DataMember = ds.Tables[0].ToString();
+            dataGridView1.AutoResizeColumns();
+
             connect.Close();
         }
         private void toolStripButtonAdd_Click(object sender, EventArgs e)

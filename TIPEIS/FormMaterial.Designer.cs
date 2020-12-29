@@ -40,9 +40,6 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBoxPrice = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBoxSubdivision = new System.Windows.Forms.ToolStripComboBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonChange = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDel = new System.Windows.Forms.ToolStripButton();
@@ -68,9 +65,6 @@
             this.toolStripLabel1,
             this.toolStripTextBoxPrice,
             this.toolStripSeparator1,
-            this.toolStripLabel5,
-            this.toolStripComboBoxSubdivision,
-            this.bindingNavigatorSeparator1,
             this.toolStripButtonAdd,
             this.toolStripButtonChange,
             this.toolStripButtonDel});
@@ -81,14 +75,14 @@
             this.bindingNavigator1.MovePreviousItem = null;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = null;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1328, 31);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1328, 28);
             this.bindingNavigator1.TabIndex = 5;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // toolStripLabel3
             // 
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(77, 28);
+            this.toolStripLabel3.Size = new System.Drawing.Size(77, 25);
             this.toolStripLabel3.Text = "Название";
             // 
             // toolStripTextBoxName
@@ -104,29 +98,29 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(35, 28);
+            this.toolStripLabel2.Size = new System.Drawing.Size(35, 25);
             this.toolStripLabel2.Text = "Тип";
             // 
             // toolStripComboBoxType
             // 
             this.toolStripComboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBoxType.Name = "toolStripComboBoxType";
-            this.toolStripComboBoxType.Size = new System.Drawing.Size(160, 31);
+            this.toolStripComboBoxType.Size = new System.Drawing.Size(160, 28);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(45, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(45, 25);
             this.toolStripLabel1.Text = "Цена";
             // 
             // toolStripTextBoxPrice
@@ -142,31 +136,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
-            // 
-            // toolStripLabel5
-            // 
-            this.toolStripLabel5.Name = "toolStripLabel5";
-            this.toolStripLabel5.Size = new System.Drawing.Size(119, 28);
-            this.toolStripLabel5.Text = "Подразделение";
-            // 
-            // toolStripComboBoxSubdivision
-            // 
-            this.toolStripComboBoxSubdivision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBoxSubdivision.Name = "toolStripComboBoxSubdivision";
-            this.toolStripComboBoxSubdivision.Size = new System.Drawing.Size(160, 31);
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButtonAdd
             // 
             this.toolStripButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAdd.Image")));
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(100, 28);
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(100, 25);
             this.toolStripButtonAdd.Text = "Добавить";
             this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
@@ -176,7 +153,7 @@
             this.toolStripButtonChange.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonChange.Name = "toolStripButtonChange";
             this.toolStripButtonChange.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 28);
+            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 25);
             this.toolStripButtonChange.Text = "Редактирование";
             this.toolStripButtonChange.Click += new System.EventHandler(this.toolStripButtonChange_Click);
             // 
@@ -185,7 +162,7 @@
             this.toolStripButtonDel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDel.Image")));
             this.toolStripButtonDel.Name = "toolStripButtonDel";
             this.toolStripButtonDel.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 28);
+            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 25);
             this.toolStripButtonDel.Text = "Удалить";
             this.toolStripButtonDel.Click += new System.EventHandler(this.toolStripButtonDel_Click);
             // 
@@ -199,6 +176,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 39);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(1316, 408);
             this.dataGridView1.TabIndex = 4;
@@ -229,15 +207,12 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxPrice;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
         private System.Windows.Forms.ToolStripButton toolStripButtonChange;
         private System.Windows.Forms.ToolStripButton toolStripButtonDel;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel5;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxSubdivision;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxName;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;

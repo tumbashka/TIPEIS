@@ -102,12 +102,6 @@
     <Compile Include="FormStorages.Designer.cs">
       <DependentUpon>FormStorages.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSubdivision.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSubdivision.Designer.cs">
-      <DependentUpon>FormSubdivision.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,9 +133,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormStorages.resx">
       <DependentUpon>FormStorages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormSubdivision.resx">
-      <DependentUpon>FormSubdivision.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

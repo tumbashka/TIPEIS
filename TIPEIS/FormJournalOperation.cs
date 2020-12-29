@@ -17,8 +17,8 @@ namespace TIPEIS
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
         private string sPath = Path.Combine(Application.StartupPath, "C:\\Program Files\\SQLiteStudio\\databases\\tipeis.db");
-        String selectAllCommand = "Select Document.ID, Document.Date, TablePart.ProfitAmount, TablePart.Count, Storage.Name, Material.Name, " +
-                "Buyer.FIO, MOL.FIO from Document join TablePart on TablePart.DocumentID = Document.ID join Storage on Document.StorageID = Storage.ID " +
+        String selectAllCommand = "Select Document.ID, Document.Date as Дата, TablePart.ProfitAmount as Выручка, TablePart.Count as 'Кол-во', Storage.Name as Склад, Material.Name as Материал, " +
+                "Buyer.FIO as Покупатель, MOL.FIO as МОЛ from Document join TablePart on TablePart.DocumentID = Document.ID join Storage on Document.StorageID = Storage.ID " +
                 "join Material on Document.MaterialID = Material.ID join Buyer on Document.BuyerID = Buyer.ID join MOL on Document.MOLID = MOL.ID";
 
         public FormJournalOperation()
@@ -68,6 +68,8 @@ namespace TIPEIS
             dataAdapter.Fill(ds);
             dataGridView1.DataSource = ds;
             dataGridView1.DataMember = ds.Tables[0].ToString();
+            dataGridView1.AutoResizeColumns();
+            dataGridView1.RowHeadersVisible = false;
             connect.Close();
         }
 
@@ -85,6 +87,11 @@ namespace TIPEIS
             selectCommand = "delete from Document where ID=" + valueId;
             changeValue(ConnectionString, selectCommand);
 
+
+            selectCommand = "delete from PostingJournal where TablePartID=" + valueId;
+            changeValue(ConnectionString, selectCommand);
+
+
             //обновление dataGridView1
             selectTable(ConnectionString, selectAllCommand);
         }
@@ -101,6 +108,22 @@ namespace TIPEIS
             cmd.ExecuteNonQuery();
             trans.Commit();
             connect.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells[0].RowIndex >= 0)
+            {
+                //выбрана строка CurrentRow
+                int CurrentRow = dataGridView1.SelectedCells[0].RowIndex;
+                //получить значение Name выбранной строки
+                int valueId = Convert.ToInt32(dataGridView1[0, CurrentRow].Value.ToString());
+                FormPostingJournal form = new FormPostingJournal(valueId);
+                form.ShowDialog();
+                string ConnectionString = @"Data Source=" + sPath +
+               ";New=False;Version=3";
+                selectTable(ConnectionString, selectAllCommand);
+            }
         }
     }
 }

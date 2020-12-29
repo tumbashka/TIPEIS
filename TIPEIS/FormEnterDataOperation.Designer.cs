@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonEnter = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxMOL = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -76,6 +76,7 @@
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(201, 22);
             this.textBoxCount.TabIndex = 3;
+            this.textBoxCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // dateTimePicker1
             // 
@@ -129,15 +130,15 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Дата операции";
             // 
-            // button1
+            // buttonEnter
             // 
-            this.button1.Location = new System.Drawing.Point(83, 268);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(205, 29);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Ввод";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonEnter.Location = new System.Drawing.Point(83, 268);
+            this.buttonEnter.Name = "buttonEnter";
+            this.buttonEnter.Size = new System.Drawing.Size(205, 29);
+            this.buttonEnter.TabIndex = 10;
+            this.buttonEnter.Text = "Ввод";
+            this.buttonEnter.UseVisualStyleBackColor = true;
+            this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
             // 
             // label6
             // 
@@ -164,7 +165,7 @@
             this.ClientSize = new System.Drawing.Size(394, 319);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBoxMOL);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonEnter);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -195,7 +196,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonEnter;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxMOL;
     }

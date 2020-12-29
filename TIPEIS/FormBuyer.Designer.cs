@@ -53,6 +53,7 @@ namespace TIPEIS
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 30);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(788, 408);
             this.dataGridView1.TabIndex = 0;
@@ -78,14 +79,14 @@ namespace TIPEIS
             this.bindingNavigator1.MovePreviousItem = null;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = null;
-            this.bindingNavigator1.Size = new System.Drawing.Size(800, 31);
+            this.bindingNavigator1.Size = new System.Drawing.Size(800, 27);
             this.bindingNavigator1.TabIndex = 2;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(39, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(39, 24);
             this.toolStripLabel1.Text = "Имя";
             // 
             // toolStripTextBox1
@@ -100,14 +101,14 @@ namespace TIPEIS
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripButtonAdd
             // 
             this.toolStripButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAdd.Image")));
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(100, 28);
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(100, 24);
             this.toolStripButtonAdd.Text = "Добавить";
             this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
@@ -117,7 +118,7 @@ namespace TIPEIS
             this.toolStripButtonChange.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonChange.Name = "toolStripButtonChange";
             this.toolStripButtonChange.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 28);
+            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 24);
             this.toolStripButtonChange.Text = "Редактирование";
             this.toolStripButtonChange.Click += new System.EventHandler(this.toolStripButtonChange_Click);
             // 
@@ -126,7 +127,7 @@ namespace TIPEIS
             this.toolStripButtonDel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDel.Image")));
             this.toolStripButtonDel.Name = "toolStripButtonDel";
             this.toolStripButtonDel.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 28);
+            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 24);
             this.toolStripButtonDel.Text = "Удалить";
             this.toolStripButtonDel.Click += new System.EventHandler(this.toolStripButtonDel_Click);
             // 
