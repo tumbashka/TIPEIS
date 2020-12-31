@@ -17,7 +17,7 @@ namespace TIPEIS
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
         private string sPath = Path.Combine(Application.StartupPath, "C:\\Program Files\\SQLiteStudio\\databases\\tipeis.db");
-        String selectAllCommand = "Select Document.ID, Document.Date as Дата, TablePart.ProfitAmount as Выручка, TablePart.Count as 'Кол-во', Storage.Name as Склад, Material.Name as Материал, " +
+        String selectAllCommand = "Select Document.ID, Document.Date, TablePart.ProfitAmount as Выручка, TablePart.Count as 'Кол-во', Storage.Name as Склад, Material.Name as Материал, " +
                 "Buyer.FIO as Покупатель, MOL.FIO as МОЛ from Document join TablePart on TablePart.DocumentID = Document.ID join Storage on Document.StorageID = Storage.ID " +
                 "join Material on Document.MaterialID = Material.ID join Buyer on Document.BuyerID = Buyer.ID join MOL on Document.MOLID = MOL.ID";
 
@@ -66,10 +66,13 @@ namespace TIPEIS
            SQLiteDataAdapter(selectCommand, connect);
             DataSet ds = new DataSet();
             dataAdapter.Fill(ds);
+            connect.Close();
+
             dataGridView1.DataSource = ds;
             dataGridView1.DataMember = ds.Tables[0].ToString();
             dataGridView1.AutoResizeColumns();
             dataGridView1.RowHeadersVisible = false;
+           
             connect.Close();
         }
 

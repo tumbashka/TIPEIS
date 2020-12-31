@@ -132,7 +132,7 @@ ComboBox comboBox, string displayMember, string valueMember)
             if (ID != null)//редактирование имеющейся операции
             {
                 maxValueDocID = ID;
-                string txtSQLQueryDocument = "update Document set Date ='" + dateTimePicker1.Value.ToShortDateString() +
+                string txtSQLQueryDocument = "update Document set Date ='" + dateTimePicker1.Value.ToString("dd-MM-yyyy") +
                     "', StorageID =" + comboBoxStorage.SelectedValue + ", MaterialID =" + comboBoxMaterial.SelectedValue +
                     ", BuyerID =" + comboBoxBuyer.SelectedValue + ", MOLID =" + comboBoxMOL.SelectedValue + " where ID = " + maxValueDocID;
                 ExecuteQuery(txtSQLQueryDocument);
@@ -152,19 +152,19 @@ ComboBox comboBox, string displayMember, string valueMember)
 
                 object minValuePostingJournalID = selectValue(ConnectionString, "select MIN(ID) from PostingJournal where TablePartID = " + maxValueDocID);
                 string txtSQLQueryPostingJournal = "update PostingJournal set SubkontoDT1 = '"+ comboBoxBuyer.Text+"', Count = '"+ textBoxCount.Text + "', Sum = '"+ 
-                    profit + "', Date = '"+ dateTimePicker1.Value.ToShortDateString() + "' where ID = " + (Convert.ToInt32(minValuePostingJournalID));
+                    profit + "', Date = '"+ dateTimePicker1.Value.ToString("dd-MM-yyyy") + "' where ID = " + (Convert.ToInt32(minValuePostingJournalID));
                 ExecuteQuery(txtSQLQueryPostingJournal);
 
                 object MaterialType = selectValue(ConnectionString, "select Type from Material where ID = " + comboBoxMaterial.SelectedValue);
                 object KT = selectValue(ConnectionString, "select ID from ChartOfAccounts where Description =  '" + MaterialType + "'");
 
                 txtSQLQueryPostingJournal = "update PostingJournal set SubkontoDT1 = '" + comboBoxMaterial.Text + "', SubkontoDT2 = '" + comboBoxStorage.Text + "', " +
-                    "SubkontoDT3 = '" + comboBoxMOL.Text + "', Count = '" + textBoxCount.Text + "', Sum = '" + withoutprofit + "', Date = '" + dateTimePicker1.Value.ToShortDateString() +
+                    "SubkontoDT3 = '" + comboBoxMOL.Text + "', Count = '" + textBoxCount.Text + "', Sum = '" + withoutprofit + "', Date = '" + dateTimePicker1.Value.ToString("dd-MM-yyyy") +
                     "', AccountKT_ID = '" + KT + "' where ID = "+ (Convert.ToInt32(minValuePostingJournalID)+1);
                 ExecuteQuery(txtSQLQueryPostingJournal);
 
                 string nds = Convert.ToString(Math.Round(profit * 0.18, 2));
-                txtSQLQueryPostingJournal = "update PostingJournal set Sum = '"+nds+"', Date = '"+ dateTimePicker1.Value.ToShortDateString() + 
+                txtSQLQueryPostingJournal = "update PostingJournal set Sum = '"+nds+"', Date = '"+ dateTimePicker1.Value.ToString("dd-MM-yyyy") + 
                     "' where ID = "+(Convert.ToInt32(minValuePostingJournalID)+2);  
                 ExecuteQuery(txtSQLQueryPostingJournal);
 
@@ -173,7 +173,7 @@ ComboBox comboBox, string displayMember, string valueMember)
             {
                 maxValueDocID = Convert.ToInt32(maxValueDocID) + 1;
                 string txtSQLQueryDocument = "insert into Document (ID, Date, StorageID, MaterialID, BuyerID, MOLID) values (" +
-           (maxValueDocID) + ", '" + dateTimePicker1.Value.ToShortDateString() + "', " + comboBoxStorage.SelectedValue + "," +
+           (maxValueDocID) + ", '" + dateTimePicker1.Value.ToString("dd-MM-yyyy") + "', " + comboBoxStorage.SelectedValue + "," +
            comboBoxMaterial.SelectedValue + "," + comboBoxBuyer.SelectedValue + "," + comboBoxMOL.SelectedValue + ")";
                 ExecuteQuery(txtSQLQueryDocument);
                 //вычисление стоимости 
@@ -197,7 +197,7 @@ ComboBox comboBox, string displayMember, string valueMember)
                 // 62 91
                 string txtSQLQueryPostingJournal = "insert into PostingJournal (ID, SubkontoDT1, Count, Sum, Operation, Date, TablePartID, AccountDT_ID, AccountKT_ID) values (" +
                (Convert.ToInt32(maxValuePostingJournalID) + 1) + ", '" + comboBoxBuyer.Text + "', '" + textBoxCount.Text + "', '" + priceWithProfit +
-               "', 'Реализация материалов на сторону', '" + dateTimePicker1.Value.ToShortDateString() + "', '" + maxValueDocID + "', '7', '9')";//62  91 субконто - покупатель
+               "', 'Реализация материалов на сторону', '" + dateTimePicker1.Value.ToString("dd-MM-yyyy") + "', '" + maxValueDocID + "', '7', '9')";//62  91 субконто - покупатель
                 ExecuteQuery(txtSQLQueryPostingJournal);
 
                 object MaterialType = selectValue(ConnectionString, "select Type from Material where ID = " + comboBoxMaterial.SelectedValue);
@@ -205,14 +205,14 @@ ComboBox comboBox, string displayMember, string valueMember)
                 //91 10
                 txtSQLQueryPostingJournal = "insert into PostingJournal (ID, SubkontoKT1, SubkontoKT2, SubkontoKT3, Count, Sum, Operation, Date, TablePartID, AccountDT_ID, AccountKT_ID) values (" +
                (Convert.ToInt32(maxValuePostingJournalID) + 2) + ", '" + comboBoxMaterial.Text + "', '" + comboBoxStorage.Text + "', '" + comboBoxMOL.Text + "', '" + textBoxCount.Text + "', '" + priceWithoutProfit +
-               "', 'Реализация материалов на сторону', '" + dateTimePicker1.Value.ToShortDateString() + "', '" + maxValueDocID + "', '9', '" + KT + "')";// 91  10  
+               "', 'Реализация материалов на сторону', '" + dateTimePicker1.Value.ToString("dd-MM-yyyy") + "', '" + maxValueDocID + "', '9', '" + KT + "')";// 91  10  
                 ExecuteQuery(txtSQLQueryPostingJournal);
 
                 //91 68
                 string nds = Convert.ToString(Math.Round(priceWithProfit * stavkaNDS, 2));
                 txtSQLQueryPostingJournal = "insert into PostingJournal (ID, Sum, Operation, Date, TablePartID, AccountDT_ID, AccountKT_ID) values (" +
                (Convert.ToInt32(maxValuePostingJournalID) + 3) + " , '" + nds +
-               "', 'Реализация материалов на сторону', '" + dateTimePicker1.Value.ToShortDateString() + "', '" + maxValueDocID + "', '9', '8')";// 91 68 
+               "', 'Реализация материалов на сторону', '" + dateTimePicker1.Value.ToString("dd-MM-yyyy") + "', '" + maxValueDocID + "', '9', '8')";// 91 68 
                 ExecuteQuery(txtSQLQueryPostingJournal);
             }
             Close();

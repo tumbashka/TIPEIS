@@ -58,5 +58,11 @@ namespace TIPEIS
             FormJournalOperation form = new FormJournalOperation();
             form.Show();
         }
+
+        private void отчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReport form = new FormReport();
+            form.ShowDialog();
+        }
     }
 }

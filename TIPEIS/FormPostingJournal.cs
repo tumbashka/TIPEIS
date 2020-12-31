@@ -64,7 +64,38 @@ namespace TIPEIS
             dataGridView1.RowHeadersVisible = false;
             connect.Close();
         }
+        private void updateGrid(object sender, EventArgs e)
+        {
+            if (dateTimePickerFrom.Value.Date > dateTimePickerTo.Value.Date)
+            {
+                MessageBox.Show("Дата начала периода должна быть меньше даты конца периода");
+                return;
+            }
+            string ConnectionString = @"Data Source=" + sPath +
+           ";New=False;Version=3";
 
+            selectAllCommand = "Select PostingJournal.TablePartID, PostingJournal.Operation as Операция, ChartOfAccountsDT.Account AS ДТ, PostingJournal.SubkontoDT1 as СубконтоДТ1, " +
+                "PostingJournal.SubkontoDT2 as СубконтоДТ2 , PostingJournal.SubkontoDT3 as СубконтоДТ3 , ChartOfAccountsKT.Account AS КТ, " +
+                "PostingJournal.SubkontoKT1 as СубконтоКТ1 , PostingJournal.SubkontoKT2 as СубконтоКТ2 , PostingJournal.SubkontoKT3 as СубконтоКТ3 , " +
+                "PostingJournal.Count as 'Кол-во', PostingJournal.Sum as Сумма, PostingJournal.Date  as Дата " +
+                "from PostingJournal " +
+                "join ChartOfAccounts AS ChartOfAccountsDT on ChartOfAccountsDT.ID = PostingJournal.AccountDT_ID " +
+                "join ChartOfAccounts AS ChartOfAccountsKT on ChartOfAccountsKT.ID = PostingJournal.AccountKT_ID where PostingJournal.Date >= '"+ 
+                dateTimePickerFrom.Value.ToString("dd-MM-yyyy") + "' and PostingJournal.Date <= '"+ dateTimePickerTo.Value.ToString("dd-MM-yyyy") + "'";
+            if (ID != null)
+            {
+                if (selectAllCommand.Contains("where"))
+                {
+                    selectAllCommand += " and ";
+                }
+                else
+                {
+                    selectAllCommand += " where ";
+                }
+                selectAllCommand+= "TablePartID = '" + ID + "'";
+            }
+            selectTable(ConnectionString, selectAllCommand);
 
+        }
     }
 }

@@ -74,7 +74,7 @@
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(51, 24);
+            this.toolStripLabel2.Size = new System.Drawing.Size(51, 28);
             this.toolStripLabel2.Text = "Адрес";
             // 
             // toolStripTextBox2
@@ -89,7 +89,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(77, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(77, 28);
             this.toolStripLabel1.Text = "Название";
             // 
             // toolStripTextBox1
@@ -104,7 +104,7 @@
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripButtonAdd
             // 
@@ -121,7 +121,7 @@
             this.toolStripButtonChange.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonChange.Name = "toolStripButtonChange";
             this.toolStripButtonChange.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 24);
+            this.toolStripButtonChange.Size = new System.Drawing.Size(147, 28);
             this.toolStripButtonChange.Text = "Редактирование";
             this.toolStripButtonChange.Click += new System.EventHandler(this.toolStripButtonChange_Click);
             // 
@@ -130,7 +130,7 @@
             this.toolStripButtonDel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDel.Image")));
             this.toolStripButtonDel.Name = "toolStripButtonDel";
             this.toolStripButtonDel.RightToLeftAutoMirrorImage = true;
-            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 24);
+            this.toolStripButtonDel.Size = new System.Drawing.Size(89, 28);
             this.toolStripButtonDel.Text = "Удалить";
             this.toolStripButtonDel.Click += new System.EventHandler(this.toolStripButtonDel_Click);
             // 
