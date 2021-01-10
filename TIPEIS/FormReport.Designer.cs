@@ -44,7 +44,7 @@
             // 
             this.comboBoxReport.FormattingEnabled = true;
             this.comboBoxReport.Location = new System.Drawing.Point(501, 14);
-            this.comboBoxReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxReport.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxReport.Name = "comboBoxReport";
             this.comboBoxReport.Size = new System.Drawing.Size(320, 24);
             this.comboBoxReport.TabIndex = 0;
@@ -53,7 +53,7 @@
             // dateTimePickerFrom
             // 
             this.dateTimePickerFrom.Location = new System.Drawing.Point(51, 15);
-            this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(164, 22);
             this.dateTimePickerFrom.TabIndex = 1;
@@ -62,7 +62,7 @@
             // dateTimePickerTo
             // 
             this.dateTimePickerTo.Location = new System.Drawing.Point(261, 15);
-            this.dateTimePickerTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerTo.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerTo.Name = "dateTimePickerTo";
             this.dateTimePickerTo.Size = new System.Drawing.Size(164, 22);
             this.dateTimePickerTo.TabIndex = 2;
@@ -104,7 +104,7 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(20, 47);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -114,7 +114,7 @@
             // buttonPDF
             // 
             this.buttonPDF.Location = new System.Drawing.Point(829, 13);
-            this.buttonPDF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPDF.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPDF.Name = "buttonPDF";
             this.buttonPDF.Size = new System.Drawing.Size(100, 28);
             this.buttonPDF.TabIndex = 7;
@@ -146,9 +146,9 @@
             this.Controls.Add(this.dateTimePickerTo);
             this.Controls.Add(this.dateTimePickerFrom);
             this.Controls.Add(this.comboBoxReport);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormReport";
-            this.Text = "FormReport";
+            this.Text = "Отчёт";
             this.Load += new System.EventHandler(this.FormReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

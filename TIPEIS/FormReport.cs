@@ -39,27 +39,30 @@ namespace TIPEIS
         private void updateTable()
         {
             if (comboBoxReport.SelectedIndex != -1)
+            
             {
                 string ConnectionString = @"Data Source=" + sPath + ";New=False;Version=3";
-                string dateFrom = dateTimePickerFrom.Value.ToString("dd.MM.yyyy");
-                string dateTo = dateTimePickerTo.Value.ToString("dd.MM.yyyy");
+                string dateFrom = dateTimePickerFrom.Value.ToString("yyyy-MM-dd");
+                string dateTo = dateTimePickerTo.Value.ToString("yyyy-MM-dd");
                 labelSum.Text = "Итого: ";
                 itogo = "";
+                dataGridView1.Columns.Clear();
 
-                if (dateTimePickerFrom.Value.Date > dateTimePickerTo.Value.Date)
-                {
-                    MessageBox.Show("Дата начала периода должна быть меньше даты конца периода");
-                    return;
-                }
                 if (comboBoxReport.SelectedIndex == 0)
                 {
+                    if (dateTimePickerFrom.Value.Date > dateTimePickerTo.Value.Date)
+                    {
+                        MessageBox.Show("Дата начала периода должна быть меньше даты конца периода");
+                        return;
+                    }
                     dateTimePickerFrom.Enabled = true;
-                    string selectCommand = "Select Buyer.ID as 'Код покупателя', Buyer.FIO as 'Название покупателя', sum(TablePart.ProfitAmount) as 'Сумма выручки', sum(TablePart.ProfitAmount)/1.25 as 'Сумма себестоимости', "+
-                        "(sum(TablePart.ProfitAmount) - sum(TablePart.ProfitAmount) / 1.25) as 'Сумма прибыли/убытка' "+
-                        "from Document join TablePart on TablePart.DocumentID = Document.ID join Storage on Document.StorageID = Storage.ID "+
-                        "join Buyer on Document.BuyerID = Buyer.ID join MOL on Document.MOLID = MOL.ID where Document.Date >= '" + dateFrom + "'"+
-                        "group by Buyer.FIO";
+                    string selectCommand = "Select Buyer.ID as 'Код покупателя', Buyer.FIO as 'Название покупателя', sum(TablePart.ProfitAmount) as 'Сумма выручки', sum(TablePart.ProfitAmount)/1.25 as 'Сумма себестоимости', " +
+                        "round((sum(TablePart.ProfitAmount) - sum(TablePart.ProfitAmount) / 1.25),2) as 'Сумма прибыли/убытка' " +
+                        "from Document join TablePart on TablePart.DocumentID = Document.ID join Storage on Document.StorageID = Storage.ID " +
+                        "join Buyer on Document.BuyerID = Buyer.ID join MOL on Document.MOLID = MOL.ID where Document.Date >= '" + dateFrom + "'" +
+                        " and Document.Date <= '" + dateTo + "' group by Buyer.FIO";
                     selectTable(ConnectionString, selectCommand);
+                    
 
                     double sum = 0;
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -89,18 +92,71 @@ namespace TIPEIS
                     }
                     itogo += sum;
                     labelSum.Text += itogo;
+
                 }
                 if (comboBoxReport.SelectedIndex == 1)
                 {
+                    dataGridView1.Columns.Clear();
                     dateTimePickerFrom.Enabled = false;
-                    string dateTo2 = dateTimePickerTo.Value.ToString("yyyy");
-                    //dateTo2 = "01."
+                    int countMounth = dateTimePickerTo.Value.Month;
+                    int year = dateTimePickerTo.Value.Year;
                     string selectCommand = "select ID AS 'Код материала' , Name as 'Наименование материала' from Material";
                     selectTable(ConnectionString, selectCommand);
+                    List<string> mounths = new List<string> { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+
+                    for (int i = 1; i < countMounth + 1; i++)
+                    {
+                        string zero;
+                        if (i < 10)
+                            zero = "0";
+                        else
+                            zero = "";
+                        dataGridView1.Columns.Add(zero + i, mounths[i - 1]);
+                    }
+                    dataGridView1.Columns.Add("itog", "Итого с начала года");
+
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+                        double sumRow = 0;
+                        for (int i = 2; i < dataGridView1.Columns.Count - 1; i++)
+                        {
+                            dataGridView1.Rows[j].Cells[i].Value = getProfitOfMaterialOnMounth(dataGridView1.Columns[i].Name, Convert.ToString(dataGridView1.Rows[j].Cells[0].Value));
+                            sumRow += Convert.ToDouble(dataGridView1.Rows[j].Cells[i].Value);
+                        }
+                        dataGridView1.Rows[j].Cells[dataGridView1.Columns.Count-1].Value = sumRow;
+                        //sum += sumRow;
+                    }
+
+                    double sum;
+                    for (int i = 2; i < dataGridView1.Columns.Count; i++)
+                    {
+                        sum = 0;
+                        for (int j = 0; j < dataGridView1.Rows.Count;j++)
+                        {
+                            sum += Convert.ToDouble(dataGridView1.Rows[j].Cells[i].Value);
+                        }
+                        itogo += sum + " ";
+                    }
+                    labelSum.Text += itogo;
+
 
                 }
             }
         }
+
+
+        public string getProfitOfMaterialOnMounth(string mounth, string materialID)
+        {
+            string date = mounth +  " " + dateTimePickerTo.Value.ToString("yyyy");
+            string ConnectionString = @"Data Source=" + sPath + ";New=False;Version=3";
+            string selectCommand = "Select sum(TablePart.ProfitAmount) from Document join TablePart on TablePart.DocumentID = Document.ID where " +
+                "strftime('%m %Y', Document.Date) = '" + date + "' and Document.MaterialID = "+ materialID;
+            string result = Convert.ToString(selectValue(ConnectionString, selectCommand));
+            if (result == "")
+                result = "0";
+            return result;
+        }
+
 
         private void comboBoxReport_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -120,6 +176,22 @@ namespace TIPEIS
             dataGridView1.DataMember = ds.Tables[0].ToString();
             dataGridView1.AutoResizeColumns();
             connect.Close();
+        }
+        public object selectValue(string ConnectionString, String selectCommand)
+        {
+            SQLiteConnection connect = new
+           SQLiteConnection(ConnectionString);
+            connect.Open();
+            SQLiteCommand command = new SQLiteCommand(selectCommand,
+           connect);
+            SQLiteDataReader reader = command.ExecuteReader();
+            object value = "";
+            while (reader.Read())
+            {
+                value = reader[0];
+            }
+            connect.Close();
+            return value;
         }
 
         private void dateTimePickerFrom_ValueChanged(object sender, EventArgs e)
@@ -153,7 +225,7 @@ namespace TIPEIS
                     }
                     if (comboBoxReport.SelectedIndex == 1)
                     {
-                        title = "Ведомость распределения продаж материалов по месяцам с начала года, по " + Convert.ToString(dateTimePickerTo.Text) + "\n\n";
+                        title = "Ведомость распределения продаж материалов по месяцам с начала года, по " + dateTimePickerTo.Value.ToString("MM месяц yyyy года") + "\n\n";
                     }
 
                     var phraseTitle = new Phrase(title,
@@ -185,10 +257,18 @@ namespace TIPEIS
 
                         words.Add("Итого:");
                         words.Add("");
-                        if (comboBoxReport.SelectedIndex == 1)
+                        words.AddRange(itogo.Split(' '));
+                        for (int j = 0; j < words.Count; j++)
                         {
-                            words.Add("");
+                            table2.AddCell(new Phrase(words[j], fontParagraph));
                         }
+                    }
+                    if (comboBoxReport.SelectedIndex == 1)
+                    {
+                        List<string> words = new List<string>();
+
+                        words.Add("Итого:");
+                        words.Add("");
                         words.AddRange(itogo.Split(' '));
                         for (int j = 0; j < words.Count; j++)
                         {

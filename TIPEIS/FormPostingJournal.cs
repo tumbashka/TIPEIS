@@ -81,7 +81,7 @@ namespace TIPEIS
                 "from PostingJournal " +
                 "join ChartOfAccounts AS ChartOfAccountsDT on ChartOfAccountsDT.ID = PostingJournal.AccountDT_ID " +
                 "join ChartOfAccounts AS ChartOfAccountsKT on ChartOfAccountsKT.ID = PostingJournal.AccountKT_ID where PostingJournal.Date >= '"+ 
-                dateTimePickerFrom.Value.ToString("dd-MM-yyyy") + "' and PostingJournal.Date <= '"+ dateTimePickerTo.Value.ToString("dd-MM-yyyy") + "'";
+                dateTimePickerFrom.Value.ToString("yyyy-MM-dd") + "' and PostingJournal.Date <= '"+ dateTimePickerTo.Value.ToString("yyyy-MM-dd") + "'";
             if (ID != null)
             {
                 if (selectAllCommand.Contains("where"))
